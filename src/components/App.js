@@ -1,10 +1,12 @@
 import React, { useState, useEffect }  from 'react';
-import ApiService from "./services/ApiService";
-import { setBackgroundColor } from './utils/background';
+import ApiService from "../services/ApiService";
+import { setBackgroundColor } from '../utils/background';
+import Search from "./Search/Search";
 
 function App() {
   const [latitude, setLatitude] = useState(false);
   const [longitude, setLongitude] = useState(false);
+  const [query, setQuery] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -17,22 +19,41 @@ function App() {
 
   useEffect(() => {
     if (latitude && longitude) {
-      ApiService.getWeather(`/api/location/search/?lattlong=${latitude},${longitude}`)
-        .then((data) => {
-          ApiService.getWeather(`/api/location/${data[0].woeid}/`)
-            .then((data) => setWeatherData(data))
-            .catch((err) => setError(err));
-        })
-        .catch((err) => setError(err));
+      getWeatherData(`?lattlong=${latitude},${longitude}`, false);
     }
   }, [latitude, longitude]);
 
+  useEffect(() => {
+    if (query !== '') {
+      getWeatherData(`?query=${query}`, true);
+    }
+  }, [query]);
+
+  const getWeatherData = (url, isSearch) => {
+    ApiService.getWeather(`/api/location/search/${url}`)
+      .then((data) => {
+        if (!isSearch) {
+          ApiService.getWeather(`/api/location/${data[0].woeid}/`)
+            .then((data) => setWeatherData(data))
+            .catch((err) => setError(err));
+        } else {
+          setWeatherData(data);
+        }
+      })
+      .catch((err) => setError(err));
+  }
+
+  const onSubmit = (query) => {
+    setQuery(query);
+  };
+
   return (
     <>
+      <Search onSubmit={onSubmit}/>
       {error && (
         <h3>{error.message}</h3>
       )}
-      {weatherData && (
+      {weatherData && !query && (
         <div className="container" style={{
           backgroundColor: setBackgroundColor(weatherData.consolidated_weather[0].the_temp)
         }}>
