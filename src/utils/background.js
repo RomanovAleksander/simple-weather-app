@@ -24,7 +24,7 @@ export const setBackgroundColor = (temp) => {
     return '#00ffff';
   } else if (temp > -10 && temp < 10) {
     return calculateColorInBetween('#00ffff', '#fff700', temp);
-  } else if (temp == 10) {
+  } else if (temp === 10) {
     return '#fff700';
   } else if (temp > 10 && temp < 30) {
     return calculateColorInBetween('#fff700', '#ff8c00', temp);

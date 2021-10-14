@@ -28,6 +28,8 @@ export default function Search({ onSubmit }) {
             placeholder="Enter the city"
             value={query}
             onChange={handleChange}
+            minLength={1}
+            required
           />
           <button type="submit" className="search-button"></button>
         </div>

@@ -62,11 +62,13 @@ function App() {
     <>
       <Search onSubmit={onSubmit}/>
       {error && (
-        <h3>{error.message}</h3>
+        <div className="container">
+          <h3>Ops... Something went wrong</h3>
+        </div>
       )}
       {weatherData && !query && (
         <div className="container" style={{
-          backgroundColor: setBackgroundColor(temp)
+          backgroundColor: setBackgroundColor(parseFloat(temp))
         }}>
           <img src={ApiService.getWeatherIcon(weatherData.consolidated_weather[0].weather_state_abbr)}
                alt={`${weatherData.consolidated_weather[0].weather_state_name}`}/>
