@@ -9,6 +9,7 @@ function App() {
   const [longitude, setLongitude] = useState(false);
   const [query, setQuery] = useState('');
   const [weatherData, setWeatherData] = useState(null);
+  const [temp, setTemp] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -34,7 +35,10 @@ function App() {
     ApiService.getWeather(`/api/location/search/${url}`)
       .then((data) => {
         ApiService.getWeather(`/api/location/${data[0].woeid}/`)
-          .then((data) => setWeatherData(data))
+          .then((data) => {
+            setWeatherData(data);
+            setTemp(data.consolidated_weather[0].the_temp)
+          })
           .catch((err) => setError(err));
       })
       .catch((err) => setError(err));
@@ -50,6 +54,10 @@ function App() {
     getWeatherData(`?lattlong=${coords}`);
   };
 
+  const handleChange = (event) => {
+    setTemp(event.target.value);
+  };
+
   return (
     <>
       <Search onSubmit={onSubmit}/>
@@ -58,10 +66,26 @@ function App() {
       )}
       {weatherData && !query && (
         <div className="container" style={{
-          backgroundColor: setBackgroundColor(weatherData.consolidated_weather[0].the_temp)
+          backgroundColor: setBackgroundColor(temp)
         }}>
           <img src={ApiService.getWeatherIcon(weatherData.consolidated_weather[0].weather_state_abbr)}
                alt={`${weatherData.consolidated_weather[0].weather_state_name}`}/>
+          {temp && (
+            <div className="slider-container">
+              <label className="label">
+                Temperature: {Math.round(parseFloat(temp))} °С
+              </label>
+              <input
+                className="slider"
+                type="range"
+                min="-60"
+                max="60"
+                value={temp}
+                onChange={handleChange}
+                step="1"
+              />
+            </div>
+          )}
         </div>
       )}
       {weatherData && query && (

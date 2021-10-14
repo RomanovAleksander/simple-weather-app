@@ -2,6 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.2rem;
+  line-height: 1.5;
 }
 
 .city-item img {
@@ -29,7 +31,7 @@
 .temp-container .temp {
   display: inline-block;
   min-width: 10px;
-  padding: 3px 7px;
+  padding: 2px 7px;
   font-size: 12px;
   font-weight: 700;
   color: #ffffff;
