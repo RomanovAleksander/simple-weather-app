@@ -1,5 +1,6 @@
 import React, { useState, useEffect }  from 'react';
 import ApiService from "./services/ApiService";
+import { setBackgroundColor } from './utils/background';
 
 function App() {
   const [latitude, setLatitude] = useState(false);
@@ -27,15 +28,19 @@ function App() {
   }, [latitude, longitude]);
 
   return (
-    <div className="container">
+    <>
       {error && (
         <h3>{error.message}</h3>
       )}
       {weatherData && (
-        <img src={ApiService.getWeatherIcon(weatherData.consolidated_weather[0].weather_state_abbr)}
-             alt={`${weatherData.consolidated_weather[0].weather_state_name}`} />
+        <div className="container" style={{
+          backgroundColor: setBackgroundColor(weatherData.consolidated_weather[0].the_temp)
+        }}>
+          <img src={ApiService.getWeatherIcon(weatherData.consolidated_weather[0].weather_state_abbr)}
+               alt={`${weatherData.consolidated_weather[0].weather_state_name}`}/>
+        </div>
       )}
-    </div>
+    </>
   );
 }
 
