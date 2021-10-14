@@ -2,6 +2,7 @@ import React, { useState, useEffect }  from 'react';
 import ApiService from "../services/ApiService";
 import { setBackgroundColor } from '../utils/background';
 import Search from "./Search/Search";
+import CityItem from "./CityItem/CityItem";
 
 function App() {
   const [latitude, setLatitude] = useState(false);
@@ -19,32 +20,34 @@ function App() {
 
   useEffect(() => {
     if (latitude && longitude) {
-      getWeatherData(`?lattlong=${latitude},${longitude}`, false);
+      getWeatherData(`?lattlong=${latitude},${longitude}`);
     }
   }, [latitude, longitude]);
 
   useEffect(() => {
     if (query !== '') {
-      getWeatherData(`?query=${query}`, true);
+      getWeatherData(`?query=${query}`);
     }
   }, [query]);
 
-  const getWeatherData = (url, isSearch) => {
+  const getWeatherData = (url) => {
     ApiService.getWeather(`/api/location/search/${url}`)
       .then((data) => {
-        if (!isSearch) {
-          ApiService.getWeather(`/api/location/${data[0].woeid}/`)
-            .then((data) => setWeatherData(data))
-            .catch((err) => setError(err));
-        } else {
-          setWeatherData(data);
-        }
+        ApiService.getWeather(`/api/location/${data[0].woeid}/`)
+          .then((data) => setWeatherData(data))
+          .catch((err) => setError(err));
       })
       .catch((err) => setError(err));
   }
 
   const onSubmit = (query) => {
+    setWeatherData(null);
     setQuery(query);
+  };
+
+  const handleClick = (coords) => {
+    setQuery('');
+    getWeatherData(`?lattlong=${coords}`);
   };
 
   return (
@@ -60,6 +63,9 @@ function App() {
           <img src={ApiService.getWeatherIcon(weatherData.consolidated_weather[0].weather_state_abbr)}
                alt={`${weatherData.consolidated_weather[0].weather_state_name}`}/>
         </div>
+      )}
+      {weatherData && query && (
+        <CityItem city={weatherData} handleClick={handleClick}/>
       )}
     </>
   );

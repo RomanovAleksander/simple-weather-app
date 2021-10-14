@@ -1,12 +1,12 @@
 .search-form {
   position: absolute;
+  top: 0 ;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100px;
   background-color: #0E1621;
-  box-sizing: border-box;
 }
 
 .input-wrapper {
@@ -19,7 +19,6 @@ input, button {
   border: 0;
   font-size: 1.8rem;
   color: #ffffff;
-  box-sizing: border-box;
 }
 
 input[type="text"] {

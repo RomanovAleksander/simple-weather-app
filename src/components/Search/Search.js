@@ -6,12 +6,17 @@ export default function Search({ onSubmit }) {
 
   const handleChange = (e) => {
     let query = e.target.value;
-    setQuery(query.trim());
+    setQuery(query);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(query.toLowerCase());
+    if (query.toLowerCase() === 'kyiv') {
+      onSubmit('kiev');
+    } else {
+      onSubmit(query.toLowerCase());
+    }
+    setQuery('');
   };
 
   return (
