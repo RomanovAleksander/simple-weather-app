@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/simple-weather-app/static/css/main.a50de0b8.chunk.css",
-    "main.js": "/simple-weather-app/static/js/main.56d469a7.chunk.js",
-    "main.js.map": "/simple-weather-app/static/js/main.56d469a7.chunk.js.map",
+    "main.css": "/simple-weather-app/static/css/main.9f010135.chunk.css",
+    "main.js": "/simple-weather-app/static/js/main.1af2aba0.chunk.js",
+    "main.js.map": "/simple-weather-app/static/js/main.1af2aba0.chunk.js.map",
     "runtime-main.js": "/simple-weather-app/static/js/runtime-main.e7046ba1.js",
     "runtime-main.js.map": "/simple-weather-app/static/js/runtime-main.e7046ba1.js.map",
     "static/js/2.600bb06f.chunk.js": "/simple-weather-app/static/js/2.600bb06f.chunk.js",
     "static/js/2.600bb06f.chunk.js.map": "/simple-weather-app/static/js/2.600bb06f.chunk.js.map",
     "index.html": "/simple-weather-app/index.html",
-    "static/css/main.a50de0b8.chunk.css.map": "/simple-weather-app/static/css/main.a50de0b8.chunk.css.map",
+    "static/css/main.9f010135.chunk.css.map": "/simple-weather-app/static/css/main.9f010135.chunk.css.map",
     "static/js/2.600bb06f.chunk.js.LICENSE.txt": "/simple-weather-app/static/js/2.600bb06f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e7046ba1.js",
     "static/js/2.600bb06f.chunk.js",
-    "static/css/main.a50de0b8.chunk.css",
-    "static/js/main.56d469a7.chunk.js"
+    "static/css/main.9f010135.chunk.css",
+    "static/js/main.1af2aba0.chunk.js"
   ]
 }
