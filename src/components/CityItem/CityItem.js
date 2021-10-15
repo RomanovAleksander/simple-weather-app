@@ -1,6 +1,6 @@
 import React from 'react';
 import ApiService from '../../services/ApiService';
-import './cityItem.css';
+import './cityItem.scss';
 
 export default function CityItem({ city, handleClick }) {
   return (

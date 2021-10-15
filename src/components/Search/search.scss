@@ -1,0 +1,48 @@
+.search-form {
+  position: absolute;
+  top: 0 ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  background-color: #0E1621;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 400px;
+
+  input, button {
+    height: 60px;
+    border: 0;
+    font-size: 1.8rem;
+    color: #ffffff;
+  }
+
+  input[type="text"] {
+    position: relative;
+    width: 100%;
+    padding: 0 1.6rem;
+    border-radius: 10px;
+    background: #182533;
+    z-index: 1;
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    width: 55px;
+    font-weight: bold;
+    background: #57bd84;
+    border-radius: 0 10px 10px 0;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  /*input:not(:placeholder-shown) + button {*/
+  /*  display: block;*/
+  /*}*/
+}

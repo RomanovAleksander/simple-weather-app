@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './search.css';
+import './search.scss';
 
 export default function Search({ onSubmit }) {
   const [query, setQuery] = useState('');
