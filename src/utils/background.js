@@ -5,7 +5,7 @@ const hexToRgb = (hex) => {
     g: parseInt(result[2], 16),
     b: parseInt(result[3], 16)
   } : null;
-};
+}; // taken from https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
 
 const calculateColorInBetween = (start, end, temp) => {
   const startRGB = hexToRgb(start);
