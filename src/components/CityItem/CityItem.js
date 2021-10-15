@@ -20,7 +20,7 @@ export default function CityItem({ city, handleClick }) {
         </div>
         <div>
           Geo coords {''}
-          <span className="green coords" onClick={() => handleClick(city.parent.latt_long)}>
+          <span className="green coords" onClick={() => handleClick(city.title)}>
             [{city.parent.latt_long}]
           </span>
         </div>

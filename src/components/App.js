@@ -50,9 +50,9 @@ function App() {
     setQuery(query);
   };
 
-  const handleClick = (coords) => {
+  const handleClick = (title) => {
     setQuery('');
-    getWeatherData(`?lattlong=${coords}`);
+    getWeatherData(`?query=${title}`);
   };
 
   const handleChange = (event) => {
