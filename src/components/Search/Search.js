@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './search.css';
 
 export default function Search({ onSubmit }) {
@@ -20,19 +20,19 @@ export default function Search({ onSubmit }) {
   };
 
   return (
-      <form className="search-form" onSubmit={handleSubmit}>
-        <div className="input-wrapper">
-          <input
-            type="text"
-            autoComplete="off"
-            placeholder="Enter the city"
-            value={query}
-            onChange={handleChange}
-            minLength={1}
-            required
-          />
-          <button type="submit" className="search-button"></button>
-        </div>
-      </form>
+    <form className="search-form" onSubmit={handleSubmit}>
+      <div className="input-wrapper">
+        <input
+          type="text"
+          autoComplete="off"
+          placeholder="Enter the city"
+          value={query}
+          onChange={handleChange}
+          minLength={1}
+          required
+        />
+        <button type="submit" className="search-button"/>
+      </div>
+    </form>
   )
 }

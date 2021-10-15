@@ -1,8 +1,8 @@
 import React, { useState, useEffect }  from 'react';
-import ApiService from "../services/ApiService";
+import ApiService from '../services/ApiService';
 import { setBackgroundColor } from '../utils/background';
-import Search from "./Search/Search";
-import CityItem from "./CityItem/CityItem";
+import Search from './Search/Search';
+import CityItem from './CityItem/CityItem';
 
 function App() {
   const [latitude, setLatitude] = useState(false);
@@ -37,7 +37,8 @@ function App() {
         ApiService.getWeather(`/api/location/${data[0].woeid}/`)
           .then((data) => {
             setWeatherData(data);
-            setTemp(data.consolidated_weather[0].the_temp)
+            setTemp(data.consolidated_weather[0].the_temp);
+            setError(null);
           })
           .catch((err) => setError(err));
       })

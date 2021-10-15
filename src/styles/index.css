@@ -30,6 +30,10 @@ code {
   height: 100vh;
 }
 
+.container img {
+  height: 100px;
+}
+
 .slider-container {
   position: absolute;
   bottom: 20px;
